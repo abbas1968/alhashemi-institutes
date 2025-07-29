@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حول | الأستاذ حسين الهاشمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #eef6ee;
+      font-size: 1rem;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-custom {
+      background: #e8ffe2;
+      border-bottom: 2px solid #d7f7db;
+      box-shadow: 0 2px 12px #25694314;
+      margin-bottom: 2.2rem;
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+      position: relative;
+      min-height: 57px;
+    }
+
+    .navbar-brand {
+      font-size: 1.24rem;
+      color: #256943 !important;
+      font-weight: bold;
+      letter-spacing: 1.1px;
+      user-select: none;
+      z-index: 3;
+      text-align: center;
+      white-space: nowrap;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+    }
+      @media (max-width: 991.98px) {
+      .navbar-brand {
+      top: 50%;
+      left: 48%;
+      font-size: 1rem;
+      }}
+    .nav-link {
+      color: #256943 !important;
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin: 0 0.6rem;
+      border-radius: 0.45em;
+      padding: 10px 19px;
+      text-align: center;
+    }
+
+    .nav-link.active,
+    .nav-link:focus,
+    .nav-link:hover {
+      background: #256943;
+      color: #fff !important;
+      text-decoration: none;
+    }
+
+    .navbar-toggler {
+      border: 1.5px solid #256943;
+      margin-right: 0.8rem;
+      z-index: 5;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.12rem #25694377;
+    }
+
+    .navbar-fake {
+      width: 160px;
+      min-width: 120px;
+      display: none;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-fake { display: none; }
+
+      .navbar-collapse {
+        background: #fff !important;
+        box-shadow: 0 7px 28px #00000016;
+        border-radius: 0 0 22px 22px;
+        margin-top: 0.5rem;
+        min-width: 270px;
+        max-width: 92vw;
+        left: 50%;
+        transform: translateX(-50%);
+        width: unset;
+        position: absolute;
+        top: 100%;
+        padding: 1.3rem 0 1.7rem 0;
+        z-index: 999;
+        text-align: center;
+        border: none;
+        transition: none !important;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.65em !important;
+        background: #fff !important;
+        color: #256943 !important;
+        width: 92%;
+        margin: 0.45em auto;
+        padding: 10px 10px;
+        font-size: 1.16rem;
+        font-weight: 800;
+        box-shadow: 22px 0 22px 0 #2569430f;
+        text-align: center;
+        transition: background 0.14s, color 0.13s;
+      }
+
+      .nav-link.active,
+      .nav-link:focus,
+      .nav-link:hover {
+        background: #256943 !important;
+        color: #fff !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .navbar-fake { display: block; }
+    }
+
+    .about-section {
+      max-width: 760px;
+      margin: 2.5rem auto 2.3rem;
+      background: #fffefaee;
+      border-radius: 1.6rem;
+      box-shadow: 0 6px 24px #0f57242a, 0 2px 9px #0001;
+      padding: 2.4rem 1.7rem 1.4rem;
+      text-align: center;
+    }
+
+    .about-title {
+      color: #256943;
+      font-weight: 800;
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .about-img {
+      width: 108px;
+      height: 108px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1.12rem;
+      border: 4px solid #e8ffe2;
+      box-shadow: 0 2px 12px #25694322;
+    }
+
+    .about-desc {
+      color: #195d35;
+      font-size: 1.13rem;
+      line-height: 1.85;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+    }
+
+    .about-contact {
+      margin-top: 1.8rem;
+      color: #293f2e;
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    .about-contact a {
+      color: #256943;
+      text-decoration: underline;
+      margin: 0 0.4em;
+      font-weight: 800;
+    }
+
+    .social-bar {
+      margin-top: 1.6rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 0.7em;
+      margin-bottom: 1.2rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 10px #25694322;
+      color: #256943;
+      font-size: 1.35em;
+      transition: background 0.18s, color 0.17s, box-shadow 0.16s, transform 0.19s;
+      text-decoration: none;
+      border: 1.4px solid #d3ecd5;
+    }
+
+    .social-link.telegram:hover {
+      background: #0088cc;
+      color: #fff;
+      transform: translateY(-2px) scale(1.1) rotate(-7deg);
+    }
+
+    .social-link.instagram:hover {
+      background: #C13584;
+      color: #fff;
+      transform: translateY(-2px) scale(1.1) rotate(-7deg);
+    }
+
+    .social-link.youtube:hover {
+      background: #FF0000;
+      color: #fff;
+      transform: translateY(-2px) scale(1.1) rotate(-7deg);
+    }
+
+    footer {
+      background: #e8ffe2;
+      color: #0e3220;
+      text-align: center;
+      padding: 1.5rem 0 0.8rem;
+      margin-top: auto;
+      font-size: 1.12rem;
+      box-shadow: 0 -2px 18px rgba(0, 96, 27, 0.10);
+      border-radius: 2rem 2rem 0 0;
+    }
+
+    .footer-phones {
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 1.10rem;
+      direction: ltr;
+      display: flex;
+      justify-content: center;
+      gap: 1.4em;
+      flex-wrap: wrap;
+    }
+
+    .footer-phones a {
+      margin: 0 0.18rem;
+      font-size: 1.13rem;
+      background: rgba(255,255,255,0.14);
+      padding: 0.14em 0.85em;
+      border-radius: 0.65em;
+      color: #00643d;
+      text-decoration: none;
+      transition: background 0.13s, color 0.13s;
+      border: 1.1px solid #25694314;
+      font-weight: 700;
+    }
+
+    .footer-phones a:hover {
+      background: #fff;
+      color: #256943;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .footer-credit {
+      margin-top: 0.7rem;
+      font-size: 0.99rem;
+      color: #195d35;
+      opacity: 0.91;
+      font-weight: 400;
+    }
+
+    .footer-credit strong {
+      color: #0e3220;
+      font-weight: 700;
+    }
+
+    @media (max-width: 650px) {
+      .about-section { padding: 1.1rem 0.4rem; margin-bottom: 1.5rem; }
+      .about-title { font-size: 1.14rem; }
+      .about-img { width: 75px; height: 75px; }
+      .footer-phones { font-size: 1.03rem; }
+      footer { border-radius: 1rem 1rem 0 0; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom position-relative">
+    <div class="container-fluid px-2 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center order-2 order-lg-1">
+        <button class="navbar-toggler ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="القائمة">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">الرئيسية</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">حول</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <span class="navbar-brand">حسين الهاشمي</span>
+      <div class="navbar-fake order-3"></div>
+    </div>
+  </nav>
+
+  <section class="about-section">
+    <img src="/static/hussein.png" alt="الأستاذ حسين الهاشمي" class="about-img">
+    <h1 class="about-title">عن الأستاذ حسين الهاشمي</h1>
+    <div class="about-desc">
+      أنا حسين الهاشمي، مدرس مادة الكيمياء بخبرة أكثر من 15 سنة في التعليم والتدريب.<br>
+      هدفي إيصال المادة للطلبة بأسلوب مبسط وحديث، مع الحرص على بناء قاعدة علمية قوية ومهارات تحليلية تفيدهم في مستقبلهم الجامعي والمهني.<br>
+      هذا الموقع الإلكتروني صُمم لخدمة طلابنا الكرام وتسهيل الوصول إلى أحدث الدورات، ومكاتب التسجيل، وأهم الإعلانات.
+    </div>
+    <div class="about-contact">
+      للتواصل والاستفسار:
+      <a href="tel:07864265700">07864265700</a> |
+      <a href="tel:07708415947">07708415947</a>
+    </div>
+
+    <div style="text-align:center; font-weight:700; color:#256943; font-size:1.05rem; margin-top: 2rem; margin-bottom: 0.5rem;">
+      تابعنا على:
+    </div>
+    <div class="social-bar">
+      <a href="https://t.me/hu1000" class="social-link telegram" target="_blank" title="قناة تيليجرام">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+      <a href="https://www.instagram.com/hus100_" class="social-link instagram" target="_blank" title="انستغرام">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UCkLv2woCjIWzk2k9bqKQTHA" class="social-link youtube" target="_blank" title="قناة يوتيوب">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-credit">
+      جميع الحقوق محفوظة لصالح <strong>الأستاذ حسين الهاشمي</strong> مدرس مادة الكيمياء.<br>
+      تطوير وتنفيذ: <strong>عباس عادل</strong> &copy; 2025
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مكاتب التسجيل في المحافظات</title>
+  <style>
+      :root {
+      --main: #009688;
+      --main-dark: #00695c;
+      --container-bg: rgba(255,255,255,0.93);
+      --header-bg: linear-gradient(100deg, #00695c 70%, #009688 100%);
+      --gradient-btn: linear-gradient(100deg, #009688 65%, #43e97b 100%);
+      --radius: 1.7rem;
+      --footer-bg: #00796b;
+      --footer-text: #fff;
+      --whatsapp-green: #25d366;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      /* نفس باكراوند الصفحة الرئيسية */
+      background:
+        linear-gradient(100deg, #009688b7 75%, #43e97bb7 100%),
+        url('static/background-2.png') repeat;
+      background-size: auto;
+      font-family: 'Tajawal', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main-title {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 2rem 0 1rem 0;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px #0004;
+    }
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 1.1rem 0 0.3rem 0;
+      margin-top: auto;
+      font-size: 1.07rem;
+      box-shadow: 0 -2px 8px rgba(0,150,136,0.09);
+      border-radius: var(--radius) var(--radius) 0 0;
+      z-index: 2;
+      position: relative;
+      width: 100%;
+    }
+    .footer-phones {
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 1.01rem;
+      letter-spacing: 0.18px;
+      direction: ltr;
+    }
+    .footer-phones a {
+      display: inline-block;
+      margin: 0 0.25rem;
+      direction: ltr;
+      font-family: 'Tajawal', Arial, sans-serif;
+      font-size: 0.99rem;
+      background: rgba(255,255,255,0.09);
+      padding: 0.12em 0.7em;
+      border-radius: 0.6em;
+      color: #e0f7fa;
+      text-decoration: none;
+      transition: background 0.13s, color 0.13s;
+    }
+    .footer-phones a:hover {
+      background: #fff;
+      color: #009688;
+      font-weight: bold;
+    }
+    .footer-credit {
+      margin-top: 1.1rem;
+      font-size: 0.97rem;
+      color: #e0f7fa;
+      opacity: 0.82;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      font-family: 'Tajawal', Arial, sans-serif;
+    }
+    .footer-credit strong {
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .whatsapp-float {
+      position: fixed;
+      left: 30px;
+      bottom: 90px;
+      z-index: 99;
+    }
+    .offices-list {
+      width: 97vw;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      z-index: 1;
+    }
+    .office-card {
+      background: #fff;
+      border-radius: 1.2em;
+      box-shadow: 0 3px 16px #0096881a, 0 2px 9px #0001;
+      padding: 1.3em 1em 1.1em 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+      transition: box-shadow 0.17s, background 0.16s;
+      border-right: 5px solid #009688;
+      position: relative;
+      animation: fadeIn 1s;
+    }
+    .office-card:hover {
+      box-shadow: 0 6px 28px #00968834, 0 2px 16px #43e97b15;
+      background: #f5fefc;
+    }
+    .office-header {
+      font-size: 1.12rem;
+      color: #009688;
+      font-weight: bold;
+      margin-bottom: 0.1em;
+    }
+    .office-name {
+      font-size: 1.02rem;
+      color: #00695c;
+      margin-bottom: 0.16em;
+      font-weight: 600;
+    }
+    .office-phone {
+      margin: 0.12em 0;
+      color: #222;
+      font-size: 0.97em;
+    }
+    .office-phone a {
+      color: #25d366;
+      font-weight: bold;
+      text-decoration: none;
+      direction: ltr;
+      font-family: 'Tajawal', Arial, sans-serif;
+    }
+    .office-phone a:hover {
+      color: #00695c;
+      text-decoration: underline;
+    }
+    .office-btn {
+      margin-top: 0.1em;
+      padding: 0.58em 1.5em;
+      background: linear-gradient(100deg, #009688 65%, #43e97b 100%);
+      color: #fff;
+      border: none;
+      border-radius: 0.7em;
+      font-size: 0.99em;
+      font-family: 'Tajawal', Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.13s;
+      box-shadow: 0 2px 10px #00968814;
+      display: inline-block;
+    }
+    .office-btn:hover {
+      background: linear-gradient(100deg, #00b4a2 50%, #43e97b 100%);
+      transform: scale(1.05) translateY(-2px);
+    }
+    @media (max-width: 700px) {
+      .main-title { font-size: 1.2rem; }
+      .offices-list { max-width: 99vw; }
+      .office-card { padding: 0.9em 0.5em; }
+      .office-header { font-size: 1em; }
+      .office-name { font-size: 0.98em; }
+    }
+    @keyframes fadeIn {
+      0% {opacity:0; transform:translateY(30px);}
+      100% {opacity:1; transform:none;}
+    }
+  </style>
+</head>
+<body>
+  <div class="main-title">مكاتب التسجيل في المحافظات</div>
+  <div class="offices-list">
+
+    <div class="office-card">
+      <div class="office-header">أربيل - هفلان</div>
+      <div class="office-name">⭕️ مكتبة كشكول - هفلان</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07714562668">07714562668</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=36.190861,44.048378')">موقع المكتب على الخريطة</button>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">كركوك - شارع التربية القديم</div>
+      <div class="office-name">⭕️ مكتبة اسامة / الفرع الاول</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07764881314">07764881314</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=35.467033,44.385746')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">كركوك - طريق بغداد</div>
+      <div class="office-name">⭕️ مكتبة اسامة / الفرع الثاني</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07701306054">07701306054</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=35.434990,44.377956')">موقع المكتب على الخريطة</button>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">كركوك - طريق بغداد</div>
+      <div class="office-name">⭕️ مكتبة الاسراء</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07701334425">07701334425</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=35.440796,44.377865')">موقع المكتب على الخريطة</button>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">نينوى - حي النور</div>
+      <div class="office-name">⭕️ مكتبة الملتقى 1</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07721355700">07721355700</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=36.362621,43.190720')">موقع المكتب على الخريطة</button>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">نينوى - حي النجار</div>
+      <div class="office-name">⭕️ مكتبة الملتقى 2</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07721355700">07721355700</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=36.360298,43.100624')">موقع المكتب على الخريطة</button>
+    </div>
+
+    <div class="office-card">
+      <div class="office-header">نينوى - شارع المهندسين</div>
+      <div class="office-name">⭕️ مكتبة كنانة</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07740864133">07740864133</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=36.372272,43.141861')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">ديالى - بعقوبة الجديدة</div>
+      <div class="office-name">⭕️ مكتبة الرضوان</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07731030555">07731030555</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/RA2re6x3Lz3LvPmG7')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">ديالى - المقدادية</div>
+      <div class="office-name">⭕️ مكتبة المتنبي2</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07711040655">07711040655</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/Gv8MR9VL9AGx28iJ8?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">ديالى - خانقين</div>
+      <div class="office-name">⭕️ مكتبة الذهبي</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07702406444">07702406444</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=34.343948,45.384533')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">تكريت - شارع الاربعين</div>
+      <div class="office-name">⭕️ مكتبة الشروق</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07703771003">07703771003</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=34.596378,43.676212')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">سامراء - شارع الفاطمي</div>
+      <div class="office-name">⭕️ مكتبة الصديقين</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07702854488">07702854488</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=34.189655,43.874352')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">الانبار - الرمادي</div>
+      <div class="office-name">⭕️ مكتبة ابو مصطفى</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07828881255">07828881255</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/VUyvoBT5hceKhSYj6?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">الانبار - فلوجة</div>
+      <div class="office-name">⭕️ مكتبة الرصافي</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07818100788">07818100788</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=33.360043,43.786678')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">واسط - الكوت</div>
+      <div class="office-name">⭕️ مكتبة الكريم</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07725423700">07725423700</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/fhnUQckx1zK1z4zg8?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">واسط - الصويرة</div>
+      <div class="office-name">⭕️ مكتبة نورالمنتظر</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07807170745">07807170745</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/Kj6qPGwMmu6FygE39?g_st=iw')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بابل - الحلة (شارع 40)</div>
+      <div class="office-name">⭕️ مكتبة التاج</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07802767474">07802767474</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=32.489368,44.431400')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بابل - المسيب</div>
+      <div class="office-name">⭕️ مكتبة المنتظر</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07706049933">07706049933</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=32.777065,44.285946')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بابل - الحلة (حي الطيارة)</div>
+      <div class="office-name">⭕️ مكتبة الماسة</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07721881884">07721881884</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=32.496605,44.424309')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بابل - الاسكندرية</div>
+      <div class="office-name">⭕️ مكتبة you can</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07838383558">07838383558</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=32.876419,44.344463')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header"> القادسية - الديوانية</div>
+      <div class="office-name">⭕️ مكتبة الشمس</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07801089423">07801089423</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=31.986122,44.920429')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">المثنى - الحيدرية</div>
+      <div class="office-name">⭕️ مكتبة قرطاسية فراس</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07801155291">07801155291</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=31.307470,45.275738')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">ذي قار - الناصرية</div>
+      <div class="office-name">⭕️ مكتبة الغدير</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07832303772">07832303772</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=31.046968,46.250782')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">كربلاء - حي الموظفين</div>
+      <div class="office-name">⭕️ مكتبة القبس</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07801004015">07801004015</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/peDegCytgoD1s6Ey9?g_st=iw')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">النجف - الحنانة</div>
+      <div class="office-name">⭕️ مكتبة النرجس</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07711778280">07711778280</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/6J23jRr8XCcyopUdA?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">النجف - حي الامير</div>
+      <div class="office-name">⭕️ مكتبة الوان</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07800662212">07800662212</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/dyZxMpr3S6eDEWET7?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">ميسان - العمارة</div>
+      <div class="office-name">⭕️ مكتبة اشرف وخلدون</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07705572853">07705572853</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=31.848957,47.150478')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">البصرة - الجنينة</div>
+      <div class="office-name">⭕️ مكتبة الجذور</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07702687911">07702687911</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=30.542400,47.795898')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">البصرة - ساحة ام البروم</div>
+      <div class="office-name">⭕️ مكتبة المربد</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07728468480">07728468480</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.google.com/?q=30.517918,47.832462')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بغداد - المنصور</div>
+      <div class="office-name">⭕️ مكتبة قمة المنصور</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07713188893">07713188893</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/6Bii65FYbmzvDS2k8?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    
+    <div class="office-card">
+      <div class="office-header">بغداد - المنصور</div>
+      <div class="office-name">⭕️ مكتبة قمة النجاح</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07709265596">07709265596</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/niCtP3tNEDwYJWT9A?g_st=com.google.maps.preview.copy')">موقع المكتب على الخريطة</button>
+    </div>
+    <div class="office-card">
+      <div class="office-header">بغداد -  شارع فلسطين </div>
+      <div class="office-name">⭕️ مكتبة المستنصرية </div>
+      <div class="office-phone">للاستفسار: <a href="tel:07733334104">07733334104</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/YTKaSDHSmP4kn9cB9?g_st=ipc')">موقع المكتب على الخريطة</button>
+    </div>
+    <div class="office-card">
+      <div class="office-header">بغداد - المنصور</div>
+      <div class="office-name">⭕️ مكتبة جوهرة المنصور </div>
+      <div class="office-phone">للاستفسار: <a href="tel:07710515251">07710515251</a></div>
+      <button class="office-btn" onclick="window.open('https://maps.app.goo.gl/B1HJ185LGcgvjQBK6?g_st=ipc')">موقع المكتب على الخريطة</button>
+    </div>
+      <div class="office-card">
+      <div class="office-header">بغداد </div>
+      <div class="office-name">⭕️ منصة نيبور اكاديمي</div>
+      <div class="office-phone">للاستفسار: <a href="tel:07766666470">07766666470</a></div>
+    </div>
+  </div>
+    <footer>
+    للتواصل والاستفسار
+    <div class="footer-phones">
+      <a href="tel:07864265700" title="اتصال مباشر">07864265700</a> -
+      <a href="tel:07708415947" title="اتصال مباشر">07708415947</a>
+    </div>
+    <div class="footer-credit">
+      جميع الحقوق محفوظة لصالح <strong>الأستاذ حسين الهاشمي</strong> مدرس مادة الكيمياء. <br>
+      تطوير وتنفيذ: <strong>عباس عادل</strong> © 2025
+    </div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/9647864265700" target="_blank" title="تواصل عبر واتساب">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+  </FOoter>
+</body>
+</html>
